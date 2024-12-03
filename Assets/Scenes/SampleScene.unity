@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88430564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.072, y: 0.043, z: 0.12}
+  m_LocalPosition: {x: 63.871998, y: -1396.8671, z: 0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -444,7 +444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -16.49, z: -10}
+  m_LocalPosition: {x: 63.8, y: -1413.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -610,7 +610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 506, y: 61.119995}
+  m_AnchoredPosition: {x: 506, y: 61.120117}
   m_SizeDelta: {x: 2614.687, y: 136.26697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811742911
@@ -748,7 +748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908324169}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -19.74, z: 0}
+  m_LocalPosition: {x: 63.76, y: -1416.65, z: 0}
   m_LocalScale: {x: 0.3306, y: 0.38452497, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1286,7 +1286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195192233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: -21.25, z: -0.034637515}
+  m_LocalPosition: {x: 62.73, y: -1418.13, z: -0.034637515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1492,8 +1492,10 @@ MonoBehaviour:
   OverPanel: {fileID: 631570908}
   StartGameBtn:
   - {fileID: 1194202627}
-  - {fileID: 1100928852}
   player: {fileID: 1727196284}
+  reStartBtn: {fileID: 1100928852}
+  score: 0
+  UIscore: {fileID: 1119341323}
   pipeLineManager: {fileID: 718685293}
 --- !u!1 &1508384751
 GameObject:
@@ -1751,9 +1753,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.045690954, y: 0.05915737}
+  m_Offset: {x: 63.804657, y: -1396.8477}
   serializedVersion: 2
-  m_Radius: 0.3186655
+  m_Radius: 0.30018616
 --- !u!114 &1727196289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,7 +1955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856042116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.072006226, y: 0.042999268, z: 0.119999886}
+  m_LocalPosition: {x: 63.872005, y: -1396.8671, z: 0.119999886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -17,7 +17,11 @@ public class Game : MonoBehaviour
     public Game_Status Status
     {
         get { return status; }
-        set { status = value; }
+        set 
+        {
+            status = value;
+            UpdateUI();
+        }
     }
 
     public GameObject ReadyPanel;
@@ -25,6 +29,18 @@ public class Game : MonoBehaviour
     public GameObject OverPanel;
     public List<Button> StartGameBtn;
     public GameObject player;
+    public Button reStartBtn;
+    private int score;
+    public Text UIscore;
+    public int Score
+    {
+        get { return score; }
+        set 
+        { 
+            this.score = value;
+            UIscore.text = "»ý·Ö£º"+ score;
+        }
+    }
 
     public PiepLineManager pipeLineManager;
 
@@ -39,6 +55,7 @@ public class Game : MonoBehaviour
         {
             StartGameBtn[i].onClick.AddListener(StartGame);
         }
+        reStartBtn.onClick.AddListener(Restart);
     }
     private void OnDisable()
     {
@@ -46,6 +63,8 @@ public class Game : MonoBehaviour
         {
             StartGameBtn[i].onClick.RemoveListener(StartGame);
         }
+        reStartBtn.onClick.RemoveListener(Restart);
+
     }
 
     // Update is called once per frame
@@ -55,17 +74,36 @@ public class Game : MonoBehaviour
     }
     void StartGame()
     {
-        this.status = Game_Status.InGame;
-        UpdateUI();
+        Score = 0;
+        this.Status = Game_Status.InGame;
         pipeLineManager.StartRun();
         player.GetComponent<Player>().Fly();
         player.GetComponent<Animator>().applyRootMotion = true;
-        
+        this.player.GetComponent<Player>().onDeath += Player_Ondeah;
+        player.GetComponent<Player>().OnScore += OnPlayerScore;
+    }
+
+    void OnPlayerScore(int scorer)
+    {
+        this.Score += score;
     }
     public void UpdateUI()
     {
-        this.ReadyPanel.SetActive(this.status==Game_Status.Ready);
-        this.InGamePanel.SetActive(this.status==Game_Status.InGame);
-        this.OverPanel.SetActive(this.status==Game_Status.GameOver);
+        this.ReadyPanel.SetActive(Status == Game_Status.Ready);
+        this.InGamePanel.SetActive(Status == Game_Status.InGame);
+        this.OverPanel.SetActive(Status == Game_Status.GameOver);
+    }
+
+    private void Player_Ondeah ()
+    {
+        Status = Game_Status.GameOver;
+        pipeLineManager.Stop();
+    }
+
+    public void Restart()
+    {
+        Status = Game_Status.Ready;
+        pipeLineManager.Init();
+        player.GetComponent<Player>().Init();
     }
 }
