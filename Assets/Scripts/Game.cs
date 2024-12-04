@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    private const string MaxKey = "Max";
     public  enum Game_Status
     {
         Ready,
@@ -32,6 +33,8 @@ public class Game : MonoBehaviour
     public Button reStartBtn;
     private int score;
     public Text UIscore;
+    public Text MaxScore;
+    public Text OverScore;
     public int Score
     {
         get { return score; }
@@ -80,12 +83,16 @@ public class Game : MonoBehaviour
         player.GetComponent<Player>().Fly();
         player.GetComponent<Animator>().applyRootMotion = true;
         this.player.GetComponent<Player>().onDeath += Player_Ondeah;
-        player.GetComponent<Player>().OnScore += OnPlayerScore;
+        if (player.GetComponent<Player>().OnScore == null)
+        {
+            player.GetComponent<Player>().OnScore += OnPlayerScore;
+        }
+
     }
 
     void OnPlayerScore(int scorer)
     {
-        this.Score += score;
+        this.Score += scorer;
     }
     public void UpdateUI()
     {
@@ -98,6 +105,12 @@ public class Game : MonoBehaviour
     {
         Status = Game_Status.GameOver;
         pipeLineManager.Stop();
+        OverScore.text =""+ Score;
+        if (Score>=LoadScore())
+        {
+            SaveScore();
+        }
+        MaxScore.text = ""+LoadScore();
     }
 
     public void Restart()
@@ -105,5 +118,14 @@ public class Game : MonoBehaviour
         Status = Game_Status.Ready;
         pipeLineManager.Init();
         player.GetComponent<Player>().Init();
+    }
+    void SaveScore()
+    {
+        PlayerPrefs.SetInt(MaxKey,Score);
+    }
+    int LoadScore()
+    {
+        int a= PlayerPrefs.GetInt(MaxKey,0);
+        return a;
     }
 }
