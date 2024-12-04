@@ -19,7 +19,7 @@ public class PipeMove : MonoBehaviour
     }
     void Update()
     {
-        this.transform.position += new Vector3(-2, 0, 0) * Time.deltaTime;
+        this.transform.position += new Vector3(-2f, 0, 0) * Time.deltaTime;
         t += Time.deltaTime;
         if (t >6f)
         {
